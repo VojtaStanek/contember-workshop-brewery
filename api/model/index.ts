@@ -3,12 +3,21 @@ import { SchemaDefinition as def, AclDefinition as acl, InputValidation as val }
 export const Brewer = acl.createRole('brewer')
 export const BreweryVariable = acl.createEntityVariable('brewery', 'Brewery', Brewer)
 
+export const Public = acl.createRole('public')
+
 @acl.allow(Brewer, {
 	when: { brewery: { id: BreweryVariable } },
 	create: true,
 	read: true,
 	update: true,
 	delete: true,
+})
+@acl.allow(Public, {
+	when: {
+		verdict: { eq: 'passed' },
+		certificateIssued: { isNull: false },
+	},
+	read: ['name', 'alcohol', 'brewery', 'finalComment'],
 })
 export class Beer {
 	name = def.stringColumn().notNull()
@@ -30,6 +39,12 @@ export class Beer {
 	when: { id: BreweryVariable },
 	read: true,
 	update: ['locationLat', 'locationLng', 'beers'],
+})
+@acl.allow(Public, {
+	when: {
+		beers: acl.canRead('name'),
+	},
+	read: ['name', 'beers'],
 })
 export class Brewery {
 	name = def.stringColumn().notNull()

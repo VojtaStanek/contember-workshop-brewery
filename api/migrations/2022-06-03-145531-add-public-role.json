@@ -1,0 +1,60 @@
+{
+	"formatVersion": 3,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/public",
+					"value": {
+						"stages": "*",
+						"entities": {
+							"Beer": {
+								"predicates": {
+									"verdict_eq_passed_certificate": {
+										"verdict": {
+											"eq": "passed"
+										},
+										"certificateIssued": {
+											"isNull": false
+										}
+									}
+								},
+								"operations": {
+									"read": {
+										"name": "verdict_eq_passed_certificate",
+										"alcohol": "verdict_eq_passed_certificate",
+										"brewery": "verdict_eq_passed_certificate",
+										"finalComment": "verdict_eq_passed_certificate"
+									}
+								}
+							},
+							"Brewery": {
+								"predicates": {
+									"beers_verdict_eq_passed_certi": {
+										"beers": {
+											"verdict": {
+												"eq": "passed"
+											},
+											"certificateIssued": {
+												"isNull": false
+											}
+										}
+									}
+								},
+								"operations": {
+									"read": {
+										"name": "beers_verdict_eq_passed_certi",
+										"beers": "beers_verdict_eq_passed_certi"
+									}
+								}
+							}
+						},
+						"variables": {}
+					}
+				}
+			]
+		}
+	]
+}

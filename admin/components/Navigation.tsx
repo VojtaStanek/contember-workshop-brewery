@@ -8,6 +8,7 @@ export const Navigation = () => (
 			<Menu.Item title="Beers" to="listBeer" />
 			<Menu.Item title="#1: New request" to="createBeer" />
 			<Menu.Item title="#2: Beers to taste" to="beersToTaste" />
+			<Menu.Item title="#3: Beers to analyze" to="beersToAnalyze" />
 		</Menu.Item>
 	</Menu>
 )

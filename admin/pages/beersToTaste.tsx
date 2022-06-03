@@ -6,8 +6,8 @@ export default () => (
 		<TextCell field="name" header="Name" />
 		<NumberCell field="alcohol" header="Alcohol contents" />
 		<TextCell field="brewery.name" header="Brewery" />
-		{/* <GenericCell shrunk canBeHidden={false}>
-			<LinkButton to="editBeer(id:$entity.id)">Edit</LinkButton>
-		</GenericCell> */}
+		<GenericCell shrunk canBeHidden={false}>
+			<LinkButton to="scoreBeer(id:$entity.id)">Taste</LinkButton>
+		</GenericCell>
 	</DataGridPage>
 )

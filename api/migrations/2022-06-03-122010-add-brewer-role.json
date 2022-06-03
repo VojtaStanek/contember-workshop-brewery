@@ -1,0 +1,72 @@
+{
+	"formatVersion": 3,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/brewer",
+					"value": {
+						"stages": "*",
+						"entities": {
+							"Beer": {
+								"predicates": {
+									"brewery_id_brewery": {
+										"brewery": {
+											"id": "brewery"
+										}
+									}
+								},
+								"operations": {
+									"read": {
+										"name": "brewery_id_brewery",
+										"alcohol": "brewery_id_brewery",
+										"brewery": "brewery_id_brewery"
+									},
+									"create": {
+										"name": "brewery_id_brewery",
+										"alcohol": "brewery_id_brewery",
+										"brewery": "brewery_id_brewery"
+									},
+									"update": {
+										"name": "brewery_id_brewery",
+										"alcohol": "brewery_id_brewery",
+										"brewery": "brewery_id_brewery"
+									},
+									"delete": "brewery_id_brewery"
+								}
+							},
+							"Brewery": {
+								"predicates": {
+									"id_brewery": {
+										"id": "brewery"
+									}
+								},
+								"operations": {
+									"read": {
+										"name": "id_brewery",
+										"locationLat": "id_brewery",
+										"locationLng": "id_brewery",
+										"beers": "id_brewery"
+									},
+									"update": {
+										"locationLat": "id_brewery",
+										"locationLng": "id_brewery",
+										"beers": "id_brewery"
+									}
+								}
+							}
+						},
+						"variables": {
+							"brewery": {
+								"type": "entity",
+								"entityName": "Brewery"
+							}
+						}
+					}
+				}
+			]
+		}
+	]
+}

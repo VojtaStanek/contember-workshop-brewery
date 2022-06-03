@@ -1,0 +1,125 @@
+{
+	"formatVersion": 3,
+	"modifications": [
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "Beer",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "beer",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": {},
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "Brewery",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "brewery",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": {},
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Beer",
+			"field": {
+				"name": "name",
+				"columnName": "name",
+				"columnType": "text",
+				"nullable": false,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Beer",
+			"field": {
+				"name": "alcohol",
+				"columnName": "alcohol",
+				"columnType": "double precision",
+				"nullable": true,
+				"type": "Double"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Brewery",
+			"field": {
+				"name": "name",
+				"columnName": "name",
+				"columnType": "text",
+				"nullable": false,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Brewery",
+			"field": {
+				"name": "locationLat",
+				"columnName": "location_lat",
+				"columnType": "double precision",
+				"nullable": true,
+				"type": "Double"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Brewery",
+			"field": {
+				"name": "locationLng",
+				"columnName": "location_lng",
+				"columnType": "double precision",
+				"nullable": true,
+				"type": "Double"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Beer",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "brewery",
+				"target": "Brewery",
+				"joiningColumn": {
+					"columnName": "brewery_id",
+					"onDelete": "restrict"
+				},
+				"nullable": false,
+				"inversedBy": "beers"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "beers",
+				"target": "Beer",
+				"ownedBy": "brewery"
+			}
+		}
+	]
+}

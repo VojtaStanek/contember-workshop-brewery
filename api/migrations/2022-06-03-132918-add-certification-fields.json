@@ -1,0 +1,179 @@
+{
+	"formatVersion": 3,
+	"modifications": [
+		{
+			"modification": "createEnum",
+			"enumName": "BeerVerdict",
+			"values": [
+				"passed",
+				"failed"
+			]
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Beer",
+			"field": {
+				"name": "tasteScore",
+				"columnName": "taste_score",
+				"columnType": "integer",
+				"nullable": true,
+				"type": "Integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Beer",
+			"field": {
+				"name": "chemialPdfUrl",
+				"columnName": "chemial_pdf_url",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Beer",
+			"field": {
+				"name": "verdict",
+				"columnName": "verdict",
+				"columnType": "BeerVerdict",
+				"nullable": true,
+				"type": "Enum"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Beer",
+			"field": {
+				"name": "finalComment",
+				"columnName": "final_comment",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Beer",
+			"field": {
+				"name": "certificateIssued",
+				"columnName": "certificate_issued",
+				"columnType": "date",
+				"nullable": true,
+				"type": "Date"
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/brewer/entities/Beer/operations/read/tasteScore",
+					"value": "brewery_id_brewery"
+				},
+				{
+					"op": "add",
+					"path": "/roles/brewer/entities/Beer/operations/read/chemialPdfUrl",
+					"value": "brewery_id_brewery"
+				},
+				{
+					"op": "add",
+					"path": "/roles/brewer/entities/Beer/operations/read/verdict",
+					"value": "brewery_id_brewery"
+				},
+				{
+					"op": "add",
+					"path": "/roles/brewer/entities/Beer/operations/read/finalComment",
+					"value": "brewery_id_brewery"
+				},
+				{
+					"op": "add",
+					"path": "/roles/brewer/entities/Beer/operations/read/certificateIssued",
+					"value": "brewery_id_brewery"
+				},
+				{
+					"op": "add",
+					"path": "/roles/brewer/entities/Beer/operations/create/tasteScore",
+					"value": "brewery_id_brewery"
+				},
+				{
+					"op": "add",
+					"path": "/roles/brewer/entities/Beer/operations/create/chemialPdfUrl",
+					"value": "brewery_id_brewery"
+				},
+				{
+					"op": "add",
+					"path": "/roles/brewer/entities/Beer/operations/create/verdict",
+					"value": "brewery_id_brewery"
+				},
+				{
+					"op": "add",
+					"path": "/roles/brewer/entities/Beer/operations/create/finalComment",
+					"value": "brewery_id_brewery"
+				},
+				{
+					"op": "add",
+					"path": "/roles/brewer/entities/Beer/operations/create/certificateIssued",
+					"value": "brewery_id_brewery"
+				},
+				{
+					"op": "add",
+					"path": "/roles/brewer/entities/Beer/operations/update/tasteScore",
+					"value": "brewery_id_brewery"
+				},
+				{
+					"op": "add",
+					"path": "/roles/brewer/entities/Beer/operations/update/chemialPdfUrl",
+					"value": "brewery_id_brewery"
+				},
+				{
+					"op": "add",
+					"path": "/roles/brewer/entities/Beer/operations/update/verdict",
+					"value": "brewery_id_brewery"
+				},
+				{
+					"op": "add",
+					"path": "/roles/brewer/entities/Beer/operations/update/finalComment",
+					"value": "brewery_id_brewery"
+				},
+				{
+					"op": "add",
+					"path": "/roles/brewer/entities/Beer/operations/update/certificateIssued",
+					"value": "brewery_id_brewery"
+				}
+			]
+		},
+		{
+			"modification": "patchValidationSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/Beer",
+					"value": {
+						"tasteScore": [
+							{
+								"validator": {
+									"operation": "range",
+									"args": [
+										{
+											"type": "literal",
+											"value": 0
+										},
+										{
+											"type": "literal",
+											"value": 10
+										}
+									]
+								},
+								"message": {
+									"text": "Score is not in the range"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	]
+}
